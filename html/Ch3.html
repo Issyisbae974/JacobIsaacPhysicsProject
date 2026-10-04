@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!--Meta Data (isn't shown on the page). This is me! Isaac-->
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <!--Main Scripts-->
+    <script src="https://unpkg.com/freezeframe/dist/freezeframe.min.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <title>Isaac & Jacob's Phyics Project</title>
+    </head>
+
+
+<body>
+    <nav>
+        <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../html/Ch1.html">Chapter 1</a></li>
+        <li><a href="../html/Ch2.html">Chapter 2</a></li>
+        <li><a href="../html/Ch3.html">Chapter 3</a></li>
+        </ul>
+    </nav>
+
+    <!--Title-->
+    <div class="title-container">
+        <h1>Analysis: Pitch and Timbre</h1>
+        <h2>Lee, Jacob; Rendich, Isaac</h2>
+        <h2>Viewbank College</h2>
+    </div>
+
+    <!--Body Text-->
+    <div class="body-container">
+        <div class="body-text">
+            <h4>3.1 - What is timbre?</h4>
+
+            <p>Timbre is the quality of sound that comes from an instrument, as previously discussed, the pitch from a stringed instrument is dictated by its “fundamental frequency” however different pitches sound over the fundamental frequency. These are what are known as overtones. The difference in timbre can be explained by the changing presence and level of the range of overtones. For example, a guitar with a very “bright” sound will have many more emphasised higher frequency overtones that give the sound a sharper and harsher tone. Where else, a guitar with a “warm” tone will sound much more mellow and with a very rich and bassy tone and reduced high frequency information.</p>
+
+            <p>Use the simulator to see for yourself!</p>
+            <!--EQ simulator-->
+                <div class="EQcanvas">
+                    <div class="gui-item"></div>
+                    <div class="guicontainer">
+                        <div class="gui-item" id="button-container">
+                            <button class="EQbutton" id="Play/Pause">Play/Pause</button>
+                            <button class="EQbutton" id="AcousticGuitarButton">Acoustic Guitar</button>
+                            <button class="EQbutton" id="ElectricGuitarButton">Electric Guitar</button>
+                            <button class="EQbutton" id="Piano">Piano</button>                            
+                        </div>
+                        <div class="gui-item" id="EQgui"></div>
+                    </div>
+                        <div class="gui-item"><input type="range" min="0" max="100" value="50" id="EQslider" orient="vertical" autocomplete="off"></div>
+                </div>
+                </div>
+        </div>
+      <audio id="AcousticGuitar" src="../AudioFiles/AcousticGuitar.mp3"></audio> 
+      <script type="module" src="../js/audioMotion-analyzer.js"></script>
+      <script type="module" src ="../js/EQscript.js"></script>
+    </div>
+</body>
+</html>
