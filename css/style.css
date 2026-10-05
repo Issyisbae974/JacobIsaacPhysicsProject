@@ -183,8 +183,8 @@ p {
     border-radius: 20px;     
     opacity: 0.6;     
     transition: opacity .2s;
-    direction: rtl;
     writing-mode: vertical-rl;
+    direction: rtl;
 }
 
 #EQslider::-webkit-slider-thumb {   
