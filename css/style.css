@@ -176,7 +176,6 @@ p {
 #EQslider {
     -webkit-appearance: none;
     appearance: none;
-    direction: ltr;  
     width: 40px;
     height: 35rem;
     background: #aaaaaa;     
