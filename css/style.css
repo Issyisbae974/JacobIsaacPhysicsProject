@@ -182,7 +182,8 @@ p {
     outline: none;     
     border-radius: 20px;     
     opacity: 0.6;     
-    transition: opacity .2s; 
+    transition: opacity .2s;
+    writing-mode: bt-lr;
 }
 
 #EQslider::-webkit-slider-thumb {   
