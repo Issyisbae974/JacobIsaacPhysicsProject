@@ -4,35 +4,46 @@ import AudioMotionAnalyzer from "./audioMotion-analyzer.js";
 let isConnected = false;
 let sample;
 
-
-
-const button = document.getElementById("Play/Pause")
+const buttons = document.querySelectorAll(".EQbutton");
 const volumeSlider = document.getElementById("EQslider");
 
 const audioMotion = new AudioMotionAnalyzer(document.getElementById("EQgui")),
-    audioCtx = audioMotion.audioCtx,
-    source = audioCtx.createMediaElementSource(sample),
-    gainNode = audioCtx.createGain();
+    audioCtx = audioMotion.audioCtx;
+
+let source;
+let gainNode;
 
 
 
 
-function playback () {
+function playback (buttonID) {
+    sample = document.getElementById(`${buttonID}.mp3`);
+    audioMotion.connectInput(gainNode);
     if (audioCtx.state === "suspended") {
         audioMotion.audioCtx.resume();
     }
 
     if (sample.paused) {
         if (!isConnected) {
-            audioMotion.connectInput(gainNode);
+            source = audioCtx.createMediaElementSource(sample);
+            source.connect(gainNode);
+            isConnected = true;
         }
         sample.play();
 
     } else {
         sample.pause();
         sample.currentTime = 0;
+        audioCtx.suspend();
     }
 }
+
+
+buttons.forEach(button => {
+    button.addEventListener("click", (e) => {
+        playback(e.currentTarget.id);
+    });
+});
 
 function setVolume(value) {
 
@@ -78,13 +89,16 @@ function optionSet () {
     });
 };
 
+function test(value) {
+    console.log(value);
+}
+
 //Running the functions
 optionSet();
 setVolume(volumeSlider.value);
-button.addEventListener("click", (e) => playback());
 
 volumeSlider.addEventListener('input', (e) => {
     setVolume(e.target.value);
 });
 
-source.connect(gainNode);
+

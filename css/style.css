@@ -152,12 +152,6 @@ p {
     gap: 10px
 }
 
-#button-container {
-    display: flex;
-    gap: 20px;
-    margin-bottom: auto;
-}
-
 #EQgui {
     margin-top: auto;
 }
@@ -207,6 +201,12 @@ p {
 }  
 
 /*Button*/
+#button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: auto;
+}
+
 .EQbutton {
     width: 100px;
     height: 100px;
