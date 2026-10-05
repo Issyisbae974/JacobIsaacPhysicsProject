@@ -4,7 +4,7 @@ import AudioMotionAnalyzer from "./audioMotion-analyzer.js";
 let isConnected = false;
 let sample;
 
-sample = document.getElementById("AcousticGuitar")
+
 
 const button = document.getElementById("Play/Pause")
 const volumeSlider = document.getElementById("EQslider");
@@ -81,7 +81,7 @@ function optionSet () {
 //Running the functions
 optionSet();
 setVolume(volumeSlider.value);
-button.addEventListener("click", () => playback());
+button.addEventListener("click", (e) => console.log(e.target.id));
 
 volumeSlider.addEventListener('input', (e) => {
     setVolume(e.target.value);
