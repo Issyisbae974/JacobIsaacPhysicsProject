@@ -168,10 +168,6 @@ p {
     height: 35rem;
 }
 
-#Play\/Pause {
-    margin-right: auto;
-}
-
 /*Slider*/
 #EQslider {
     -webkit-appearance: none;
