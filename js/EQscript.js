@@ -81,7 +81,7 @@ function optionSet () {
 //Running the functions
 optionSet();
 setVolume(volumeSlider.value);
-button.addEventListener("click", (e) => console.log(e.target.id));
+button.addEventListener("click", (e) => playback());
 
 volumeSlider.addEventListener('input', (e) => {
     setVolume(e.target.value);
