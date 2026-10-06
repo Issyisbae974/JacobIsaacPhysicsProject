@@ -2,23 +2,20 @@
 import AudioMotionAnalyzer from "./audioMotion-analyzer.js";
 
 let isConnected = false;
-let sample;
+
 
 const buttons = document.querySelectorAll(".EQbutton");
 const volumeSlider = document.getElementById("EQslider");
 
-const audioMotion = new AudioMotionAnalyzer(document.getElementById("EQgui")),
-    audioCtx = audioMotion.audioCtx;
-
+const audioMotion = new AudioMotionAnalyzer(document.getElementById("EQgui"));
+const audioCtx = audioMotion.audioCtx;
+const gainNode = audioCtx.createGain();
+let sample;
 let source;
-let gainNode;
-
-
-
 
 function playback (buttonID) {
     sample = document.getElementById(`${buttonID}.mp3`);
-    audioMotion.connectInput(gainNode);
+    source = audioCtx.createMediaElementSource(sample);
     if (audioCtx.state === "suspended") {
         audioMotion.audioCtx.resume();
     }
@@ -27,21 +24,68 @@ function playback (buttonID) {
         if (!isConnected) {
             source = audioCtx.createMediaElementSource(sample);
             source.connect(gainNode);
+            audioMotion.connectInput(gainNode);
             isConnected = true;
         }
         sample.play();
-
     } else {
         sample.pause();
         sample.currentTime = 0;
         audioCtx.suspend();
     }
 }
+function getPlayingAudioId() {
+    const audioElements = Array.from(document.querySelectorAll('audio'));
+    
+    const playingAudio = audioElements.find(audio => !audio.paused);
+    
+    return playingAudio ? playingAudio.id : null;
+}
 
+const initializedSources = new Map();
+
+async function play (buttonID) {
+    const sample = document.getElementById(`${buttonID}.mp3`);
+
+    if (!sample) return;
+
+    let currentPlayingId = getPlayingAudioId();
+
+    document.querySelectorAll('audio').forEach(audio => {
+        audio.pause();
+        audio.currentTime = 0;
+    });
+
+    if (currentPlayingId === `${buttonID}.mp3` ) {
+        sample.currentTime = 0;
+        sample.pause();
+    } else {
+        sample.currentTime = 0;
+        sample.play();
+
+    }
+
+
+
+    if (audioCtx.state === "suspended") {
+        await audioCtx.resume();
+    }
+
+    if (!initializedSources.has(buttonID)) {
+        const mediaSource = audioCtx.createMediaElementSource(sample);
+        
+        mediaSource.connect(gainNode);
+        audioMotion.connectInput(gainNode); 
+        
+        initializedSources.set(buttonID, mediaSource);
+    }
+
+ 
+}
 
 buttons.forEach(button => {
     button.addEventListener("click", (e) => {
-        playback(e.currentTarget.id);
+        play(e.currentTarget.id);
     });
 });
 
