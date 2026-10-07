@@ -213,6 +213,21 @@ p {
     border: 2px solid black;
 }
 
-.bb {
-    margin-bottom: 20px;
+.apa-reference-list {
+    line-height: 2.0; /* APA 7 standard double spacing */
+    font-family: Calibri, Arial, sans-serif;
+    margin-bottom: 2em;
+}
+
+.apa-reference-list h4 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1em;
+}
+
+.apa-entry {
+    padding-left: 36pt; /* 0.5-inch hanging indent */
+    text-indent: -36pt; 
+    margin-bottom: 1.5em; 
+    word-wrap: break-word;
 }
