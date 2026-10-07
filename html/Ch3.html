@@ -53,15 +53,23 @@
                             <button class="EQbutton" id="Organ">Organ</button>
                             <button class="EQbutton" id="Trombone">Trombone</button>
                         </div>
-                        <div class="gui-item" id="EQgui"></div>
+                        <div class="EQgraph">
+                            <div class="y-axis-label">Amplitude (dB)</div>
+                            <div id="EQgui"></div>
+                            <div class="centered">Frequency (Hz)</div>
+                        </div>
                     </div>
                         <div class="gui-item"><input type="range" min="0" max="100" value="50" id="EQslider" orient="vertical" autocomplete="off"></div>
+                     </div>
+        </div>
+        <div class="body-text">
+            <h4>3.2 - The Harmonic Series</h4>
+        Intervals on a musical instrument correspond to ratios between the fundamental frequencies of the two notes being sounded. For example, a pitch with the frequency of 440 hertz and a pitch with double that at 880 hertz is a 2:1 ratio, as one pitch is double the frequency of the other, in music this is denotes as an octave, in which the notes share the same letter name of frequency and are largely harmonious. 
+                <div class="centered">
+                <img src="../images/urethra.png" alt="Frequency Analysis">
+                <p class="caption-centered">Graphic EQ, displays an instrument playing an “A” note at 110 hertz.</p>
                 </div>
-            </div>
-            <div class="im">
-            <img class="gif" src="../images/urethra.png" alt="Fundamental Frequency Image">
-            <p class="caption-centered">Graphic EQ, displays an instrument playing an “A” note at 110 hertz, the 'fundamental frequency'. The sound is broken down into all the different pitches present, as can be seen, the peak of the pitch's amplitudes is around the 110 hertz mark. Other less highly expressed frequencies are part of the harmonic series/ratios formed from the 110 hertz such as the 220 hertz octave (also depicted). (Flipping Physics, n.d.)</p>
-            </div>
+            <p> The sound is broken down into all the different pitches present, as can be seen, the apex of pitch is around the 110 hertz mark. Other less highly expressed frequencies are part of the harmonic series/ratios formed from the 110 hertz such as the 220 hertz octave (also depicted)</p>
         </div>
         <audio src="../AudioFiles/SteelGuitar.mp3" id="SteelGuitar.mp3" type="audio/mpeg"></audio>
         <audio src="../AudioFiles/12StringSteel.mp3" id="12StringSteel.mp3" type="audio/mpeg"></audio>
@@ -72,6 +80,5 @@
         <audio src="../AudioFiles/Trombone.mp3" id="Trombone.mp3" type="audio/mpeg"></audio>
       <script type="module" src="../js/audioMotion-analyzer.js"></script>
       <script type="module" src ="../js/EQscript.js"></script>
-    </div>
 </body>
 </html>
